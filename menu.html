@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Dish:<input type="text" name="" id="food">
+    <button id="search">Search</button>
+    <div id="fooddiv">
+        <div id="showhere"></div>
+    </div>
+</body>
+</html>
+<script>
+document.getElementById("search").addEventListener("click",getfood)
+let fooddiv=document.getElementById("fooddiv")
+
+async function getfood()
+
+{
+    try{
+    let dish=document.getElementById("food").value;
+    
+     let response=await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=a`)
+ 
+    let data=await response.json();
+    // console.log("DATA",data.meals)
+    var res=data.meals
+    console.log(res[3].Object["idMeal"])
+
+//    console.log(data)
+    
+    }catch (err)
+    {
+        console.log("error is",err)
+    }
+}
+
+getfood()
+
+// function appendfood()
+// {
+
+// }
+</script>
