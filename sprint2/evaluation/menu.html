@@ -10,7 +10,9 @@
     Dish:<input type="text" name="" id="food">
     <button id="search">Search</button>
     <div id="fooddiv">
-        <div id="showhere"></div>
+        <div id="showhere">
+            <h3 id="h3"> hi</h3>
+        </div>
     </div>
 </body>
 </html>
@@ -24,25 +26,29 @@ async function getfood()
     try{
     let dish=document.getElementById("food").value;
     
-     let response=await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=a`)
+    //  let response=await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=a`)
+     let response=await fetch(`https://www.themealdb.com/api/json/v1/1/random.php`)
  
     let data=await response.json();
+    showfood(data.meals[0].idMeal)
+   
     // console.log("DATA",data.meals)
-    var res=data.meals
-    console.log(res[3].Object["idMeal"])
+   
+ 
 
-//    console.log(data)
+   console.log("datahere",data.meals[0].idMeal)
     
     }catch (err)
     {
         console.log("error is",err)
     }
+
+  
+}
+function showfood(f)
+{
+    document.getElementById("h3").textContent=data.meals[0].idMeal;
 }
 
-getfood()
 
-// function appendfood()
-// {
-
-// }
 </script>
